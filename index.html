@@ -9,6 +9,7 @@
 		
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
   </head>
   <body>
 		
@@ -98,175 +99,208 @@
 
         <section id="Home">
           <div class="container-fluid">
-            <h2 class="mb-4">Home</h2>
-            <p> ----------------- INTRO --------------------------
+            <h4 class="mb-4" style="background-color:#ddd;float:center;text-align:center">Introduction</h4>
+            <p>
+              <ul>
+                <li > What is Embedded Systems? </li>
+                3 topics convered under INTRO to Embedded Systems
+                <ul>
+                    <li>  Introduction to Embedded System(ES) </li>
+                    <li>  GPS(General Purpose System) Vs ES </li>
+                    <li>  Real Time Aspects </li>
+                </ul>
+                <li> INTRO to MicroControllers </li>
+                <li> Embedded Programming      </li>
+                <li> Communication Protocols   </li>
+              </ul>
+              <h6 style="background-color:#ddd;float:center;text-align:center">1. Introduction to Embedded System(ES) </h6>
+              <p> what is Embedded Systems ? we might different answers for this question
+                <br>  
+                  What is Newtons 3rd law ?
+                <br>
+                    "for every action there is an equal and opp reaction"
+                    this wont change anywhere in world , who ever we ask, they would say same.
+                    but when we ask someone , what is ES?
+                    we will get different answers....
+                    so to avoid confusion, whatever may be our answer, make sure 3 words are
+                    there in your defintion
+              </p>
 
-What is Embedded Systems ?
-INTRO to MicroControllers
-Embedded Programming
-Communication Protocols
+              <ul>
+                  <li>  Hardware </li>
+                  <li>  Software </li>
+                  <li>  SpecificTask </li>
+              </ul>
+            <span  style="color:green">
+            #####################################################################
+            <br>
+            A combination of H/W and S/W which is intended to do a SPECIFIC TASK
+            is called Embedded System
+            <br>
+            #####################################################################
+            <br>
+            </span>
+            
+            <br> <h6>lets design a ES for gate opening</h6>
+            <p>Design an automatic gate opening system(purely hardware)
+            <br>Requirements:</p>
+            <ol>
+            <li> when person enters, gate should open </li>
+            <li> when person leaves through gate, it should close </li>
+            </ol>
+            <p>Some peripherals we need are <br>
+                <ul>
+                      <li>proximity switch & Proximity sensor</li>
+                      <li>pneumatic system to open the gate</li>
+                      <li>Driver</li>
+                      <li>sensor switch</li>
+                      <li>Power Converter(AC-DC)</li>
+                      <li>IR Sensor</li>
+                      <li>Relay/Motor Driver(Frwd/Reverse)</li>
+                      <li>Motor</li>
+                      <li>Motion Sensor or Optical Sensor (To Detect anyone Near to Gate)</li>
+                      <li>Emergency Switch to Open</li>
+                      <li>Required Microcontroller</li>
+                </ul>
+            </p>
+            <p> 
+              But we may not need all of the above components , to make it simple
+              lets design simple with less number of components
+            </p>
+            <ol>
+              <li>Sensor(IR)</li>
+              <li>Relay</li>
+              <li>Component to keep how long gate should open and close i.e,
+                <span style="color: red" style="font-weight:bold">Timer</span>
+              </li>
+              <li>To compare output from sensor to check i.e, <span style="color: red" style="font-weight:bold">comparator</span></li>
+            </ol>
+            <p> Above things alone wont make it as ES <br>
+                ES&emsp;=&emsp;H/W&emsp;+&emsp;S/W&emsp;&ensp;+&emsp;Specific TASK  <br>
+                ❌&nbsp;&ensp;&emsp;=&emsp;✔️&ensp;&ensp;+&emsp;❌&nbsp;&emsp;&emsp;+&emsp;✔️
+            </p>  
+
+            <h6 style="background-color:#ddd;float:center;text-align:center">Examples</h6>
+            <p> Fan in our room , is not ES. <br>
+                but Fan speed controlleed automatically based on Room temp, is ES
+            </p>
+            <p> other examples are 
+            <ul>
+              <li> Washing machine </li>
+              <li> Dvd player </li>
+              <li> Atm </li>
+              <li> Temperature controller </li>
+              <li> Medical Products like MRI,CT Scan;CCTV DVR;Drones </li>
+              <li> Washing machine, Microwave </li>
+              <li> Smart watch </li>
+              <li> A.C </li>
+              <li> Smart TV </li>
+              <li> Water level controller </li>
+              <li> Refrigerators </li>
+              <li> Missiles </li>
+              <li> video game consoles </li>
+              <li> Water vending machine </li>
+              <li> Robotic car </li>
+              <li> Calibration system for sensors </li>
+              <li> Mobile Pones </li>
+              <li> mp3 players </li>
+              <li> Escalators </li>
+              <li> Infotainment system in car </li>
+            </ul>
 
 
+            <h5 style="background-color:#ddd;float:center;text-align:center">Categories</h5>
+            <p>all above said examples mostly comes under below categories
+            <ul>
+                <li> StandAlone </li>
+                <li> RealTime </li>
+                <li> Mobile </li>
+                <li> Network </li>
+            </ul>
+            </p>
 
-3 topics convered under INTRO to Embedded Systems
-_________________________________________________
-> Introduction to ES
-> GPS(General Purpose System) Vs ES
-> Real Time Aspects
+            <h6> StandAlone </h6>
+            <p>
+              > These are like Slave kind of behaving Embedded systems <br> 
+              > Follows order blindly like semi-automatic washing machine <br>
+              &ensp;&ensp;without pouring water, when we switch ON , it will rotate <br>
+              &ensp;&ensp;without water, dont throw warning <br>
+              > Dont StandAlone have Time constraints ? They do, but not mandatory.
+            </p>
 
+            <h6> RealTime </h6>
+            <p>
+              > O/P task will be perfomemed within given amount of time <br> 
+              > time can be seconds, milli sec or even nano sec <br>
+              &ensp;&ensp;<span style="color: purple">eg: AirBag System </span><br>
+            </p>
 
+            <h6> Mobile </h6>
+            <p>
+              > Any portable ES is called Mobile ES <br> 
+              &ensp;&ensp;<span style="color: purple">eg: FM Radio, Speakers </span><br>
+            </p>
 
-1. Introduction to ES
----------------------
-Q) what is ES
-Newtons 3rd law 
-"for every action there is an equal and opp reaction"
-this wont change anywhere in world , who ever we ask, they would say same
-but when we ask someone , what is ES?
-we will get different answers....
-so to avoid confusion, whatever may be our answer, make sure 3 words are
-there in your defintion
+            <h6> Network </h6>
+            <p>
+              > Any device connected to Network and send data is Network ES <br> 
+              &ensp;&ensp;<span style="color: purple">eg: Mobile Phone, Computer/PC/Laptops</span>  <br>
+              &emsp;Smartphones can be said as both Mobile and Network ES, since it is movable and works on network based, <br> 
+              &emsp;but MObile do lot of tasks, its not general purpose system <br> 
+              &emsp;Then why mobiles comes under ES? Think over it...
+            </p>
 
-1. Hardware
-2. Software
-3. SpecificTask
-#####################################################################
-A combination of H/W and S/W which is intended to do a SPECIFIC TASK
-is called Embedded System
-#####################################################################
+            <h6> Hybrid </h6>
+            <p>
+              > ES that falls under different category  <br> 
+              &ensp;&ensp;<span style="color: purple">eg: Mobile phones </span><br>
+            </p>
 
-lets design a ES for gate opening
-----------------------------------
-Design an automatic gate opening system(purely hardware)
-req:
-> when person enters, gate should open
-> when person leaves through gate, it should close
+<h5 style="background-color:#ddd;float:center;text-align:center">Components</h5>
+<p>
+Most important component in ES is MicroCOntroller / MicroProcessor / Soc(System on Chip) <br>
+SOC is more than 1 MU are integrated on single IC
+</p>   
 
-
-proximity switch, pneumatic system to open the gate
-Proximity sensor, driver, controller, motor
-motion sensor, sensor switch
-
-Power Converter(AC-DC),IR Sensor,Relay/Motor Driver(Frwd/Reverse),Motor,Motion Sensor or Optical Sensor (To Detect anyone Near to Gate),Emergency Switch to Open,Required Microcontroller.
-
-Arduino
-
-
-1. Sensor(IR)
-2. Relay
-3. COmponent to keep how long gate should open and close
-   > Timer
-4. to compare output from sensor to check
-   > comparator
-above things alone wont make it as ES
-ES  = H/W  +   S/W   + Specific task
-❌  = ✔️  +   ❌   + ✔️
-
-=============================================================================
-________
-Examples
-________
-
-Fan in our room , is not ES
-but Fan speed controlleed automatically based on Room temp, is ES
- other examples are 
-Washing machine
-Dvd player
-atm
-Temperature controller
-Medical Products like MRI,CT Scan;CCTV DVR;Drones
-washing machine, microwave
-Smart watch
-Ac
-Smart TV
-Water level controller
-VT
-refrigerators
-Missiles
-video game consoles
-Water vending machine
-Robotic car
-Calibration system for sensors
-mobile phones
-mp3 players
-escalators
-infotainment system in car
-
-____________________________________________________________
-all above said examples mostly comes under below categories
-____________________________________________________________ 
-Home APplicances
-Video Secuity Cam
-Automotive electronics
-RObotics
-Flight controls
-Medical Imaging
-Routers
-Space Rovers
-Missile
-Smart Phones
-
-=============================================================================
-__________
-Categories
-__________
-
-StandAlone  > Slave behaving
-      > Follows order blindly like semi-automatic washing machine
-      without pouring water, when we switch ON , it will rotate
-      without water, dont throw warning
-      > Dont StandAlone have Time constraints ?
-        ???????????????????????????????????????????
-        
-RealTime  > O/P task will be perfomemed within given amount of time
-    > time can be seconds, milli sec or even nano sec
-    eg: AirBag System
-
-Mobile  > Any portable ES is called Mobile ES
-Network > Any device connected to Network and send data is Network ES
-
-Smartphones can be said as both Mobile and Network ES, since it is movable
-and works on network based, 
-but MObile do lot of tasks, its not general purpose system
-?????????????????????????????????
-THen why mobiles comes under ES?
-?????????????????????????????????
-
-Hybrid  > same ES that falls under different category 
-
-=============================================================================
-___________
-Components
-___________
-
-MOst important component is
-MicroCOntroller / MicroProcessor / Soc(System on Chip)
-SOC - more than 1 MU are integrated on single IC
-
-Q. When to go with MC and Soc ?
-lets consider above example of Automatic Gate opening system
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Q. When to go with MicroController and When to go with SOC ?
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+       lets consider above example of <strong>Automatic Gate opening system</strong>
 for metro stations...
-they will open for everybody
-IN jewellery shop / warehouse, it will open for only employees with valid ID card
-Step 1 --> we will save database of employees in cloud
-     gate will open only in Working hours, this has to be saved
-Step 2 --> separate watchman databse should be there, 
-     since three shift of wathcman are there
-     for owners, it should open 24/7
+they will open for everybody who is having metro coin(ticket) or smart card <br>  
+In jewellery shop / warehouse, it will open for only employees with valid ID card <br>
+<code> Step 1(Automatic Gate opening system) :</code> 
+     we will save database of employees in cloud,
+     gate will open only in Working hours, this has to be saved <br>
+<code> Step 2(Jewellery shop) :</code>
+     separate watchman databse should be there, since three shift of watchmen are there.<br>
+     For owners, it should open 24/7 <br>
 So complexity increases when requirements are increasing
-so single MicroController cant handler all these
-thats where SoC comes into picture    
+so single MicroController cant handle all these
+thats where SOC comes into picture, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<h6> Chip Selection </h6>
+<p>
+we can use Mu for gate openings system, 
+if we change requirement like GATE should open only after Face recognisation <br>
+> Face Scanning component like Camera <br>
+> software to calcuate face matching ratio <br>
+> access to cloud memory to store images on Cloud, since images will be large <br>
+> DSP to process images <br>
+> wifi <br>
+> SOC <br>
+</p>
 
-Chip Selection
---------------
-we can use Mu for gate openings syste
-if we change requirement like GATE should open only after Face recognisation
-> Face Scanning component like Camera
-> software to calcuate face matching ratio
-> access to cloud memory to store images on Cloud, since images will be large
-> DSP to process images
-> wifi
-> SOC
 
 Earlier , we used only micro controller , since its simple gate opening system
 now, there are more requirement, so we using Microprocessor now
@@ -461,13 +495,10 @@ _____________
 
     
            
-=============================================================================
-_____________
-Tends in Dev
-_____________
+
+<h5>Trends in Development</h5>
 
 Depending on req of design, we will choose
-
 1. Processor
 2. Memory
    when its comes to Data saving, use NAND FLASH is best
@@ -481,12 +512,7 @@ Depending on req of design, we will choose
    
 
 
-
-
-=============================================================================
-_____________________
-Common design metrics
-_____________________
+<h5>Common design metrics</h5>
 
 1. Time to Prototype
    > Prototype is basic model of main product
@@ -517,10 +543,7 @@ _____________________
 9. Time to market
    > first money is important in Competitors
       
-=============================================================================
-
-
------------------ GPS Vs ES difference  ----------------------------
+<h4>GPS Vs ES difference</h4>
 
 what is GPS ?
 System designed for general activities
@@ -626,5 +649,6 @@ we can write single program for these Hierarchial validations, isn't it ?
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
   </body>
 </html>
