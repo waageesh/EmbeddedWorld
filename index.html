@@ -56,11 +56,6 @@
 	          </li>
 	        </ul>
 
-	        <div class="footer">
-	        	<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
-						  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-	        </div>
 
 	      </div>
     	</nav>
@@ -104,7 +99,501 @@
         <section id="Home">
           <div class="container-fluid">
             <h2 class="mb-4">Home</h2>
-            <p> This is Home Section </p>
+            <p> ----------------- INTRO --------------------------
+
+What is Embedded Systems ?
+INTRO to MicroControllers
+Embedded Programming
+Communication Protocols
+
+
+
+3 topics convered under INTRO to Embedded Systems
+_________________________________________________
+> Introduction to ES
+> GPS(General Purpose System) Vs ES
+> Real Time Aspects
+
+
+
+1. Introduction to ES
+---------------------
+Q) what is ES
+Newtons 3rd law 
+"for every action there is an equal and opp reaction"
+this wont change anywhere in world , who ever we ask, they would say same
+but when we ask someone , what is ES?
+we will get different answers....
+so to avoid confusion, whatever may be our answer, make sure 3 words are
+there in your defintion
+
+1. Hardware
+2. Software
+3. SpecificTask
+#####################################################################
+A combination of H/W and S/W which is intended to do a SPECIFIC TASK
+is called Embedded System
+#####################################################################
+
+lets design a ES for gate opening
+----------------------------------
+Design an automatic gate opening system(purely hardware)
+req:
+> when person enters, gate should open
+> when person leaves through gate, it should close
+
+
+proximity switch, pneumatic system to open the gate
+Proximity sensor, driver, controller, motor
+motion sensor, sensor switch
+
+Power Converter(AC-DC),IR Sensor,Relay/Motor Driver(Frwd/Reverse),Motor,Motion Sensor or Optical Sensor (To Detect anyone Near to Gate),Emergency Switch to Open,Required Microcontroller.
+
+Arduino
+
+
+1. Sensor(IR)
+2. Relay
+3. COmponent to keep how long gate should open and close
+   > Timer
+4. to compare output from sensor to check
+   > comparator
+above things alone wont make it as ES
+ES  = H/W  +   S/W   + Specific task
+❌  = ✔️  +   ❌   + ✔️
+
+=============================================================================
+________
+Examples
+________
+
+Fan in our room , is not ES
+but Fan speed controlleed automatically based on Room temp, is ES
+ other examples are 
+Washing machine
+Dvd player
+atm
+Temperature controller
+Medical Products like MRI,CT Scan;CCTV DVR;Drones
+washing machine, microwave
+Smart watch
+Ac
+Smart TV
+Water level controller
+VT
+refrigerators
+Missiles
+video game consoles
+Water vending machine
+Robotic car
+Calibration system for sensors
+mobile phones
+mp3 players
+escalators
+infotainment system in car
+
+____________________________________________________________
+all above said examples mostly comes under below categories
+____________________________________________________________ 
+Home APplicances
+Video Secuity Cam
+Automotive electronics
+RObotics
+Flight controls
+Medical Imaging
+Routers
+Space Rovers
+Missile
+Smart Phones
+
+=============================================================================
+__________
+Categories
+__________
+
+StandAlone  > Slave behaving
+      > Follows order blindly like semi-automatic washing machine
+      without pouring water, when we switch ON , it will rotate
+      without water, dont throw warning
+      > Dont StandAlone have Time constraints ?
+        ???????????????????????????????????????????
+        
+RealTime  > O/P task will be perfomemed within given amount of time
+    > time can be seconds, milli sec or even nano sec
+    eg: AirBag System
+
+Mobile  > Any portable ES is called Mobile ES
+Network > Any device connected to Network and send data is Network ES
+
+Smartphones can be said as both Mobile and Network ES, since it is movable
+and works on network based, 
+but MObile do lot of tasks, its not general purpose system
+?????????????????????????????????
+THen why mobiles comes under ES?
+?????????????????????????????????
+
+Hybrid  > same ES that falls under different category 
+
+=============================================================================
+___________
+Components
+___________
+
+MOst important component is
+MicroCOntroller / MicroProcessor / Soc(System on Chip)
+SOC - more than 1 MU are integrated on single IC
+
+Q. When to go with MC and Soc ?
+lets consider above example of Automatic Gate opening system
+for metro stations...
+they will open for everybody
+IN jewellery shop / warehouse, it will open for only employees with valid ID card
+Step 1 --> we will save database of employees in cloud
+     gate will open only in Working hours, this has to be saved
+Step 2 --> separate watchman databse should be there, 
+     since three shift of wathcman are there
+     for owners, it should open 24/7
+So complexity increases when requirements are increasing
+so single MicroController cant handler all these
+thats where SoC comes into picture    
+
+Chip Selection
+--------------
+we can use Mu for gate openings syste
+if we change requirement like GATE should open only after Face recognisation
+> Face Scanning component like Camera
+> software to calcuate face matching ratio
+> access to cloud memory to store images on Cloud, since images will be large
+> DSP to process images
+> wifi
+> SOC
+
+Earlier , we used only micro controller , since its simple gate opening system
+now, there are more requirement, so we using Microprocessor now
+
+Memory :
+--------
+1. RAM(SRAM/DRAM)
+  > RAM is volatile memory, memory got cleared out when system turns off 
+  > Random Access memory means we can fetch any memory randomly
+    no restrictions on fetching any byte
+  types of RAM:
+  -------------
+  --> SRAM (Static RAM)
+      > Buidling block of Memory is called is Memorycell
+      > one memory cell having 4 transistors
+      > Data need not be refreshed again and again
+  --> DRAM(Dyanmic RAM)
+      > one memory cell having 1 transistor and 1 cap
+      > data need to refresged again and again
+      > it is similar to ShortTerm Memory loss(Gajini)
+
+2. ROM
+  > ROM, is permanent memory(non-volatile)
+    memory will retain even after system turned off
+  > Read only Memory(Only Once write is possible),can read 'n' times
+  types of ROM:
+ --------------
+  --> PROM(Programmable Memory) / OTP(one time programmable)
+      memory can be programmable only once
+      where software update is not needed again and again,
+      like home applicances, Toys
+  --> EPROM(Electrically Programmable Memory) / UVROM(UV programmble Mem)
+      can be erased and re-programmable using UV rays/electrical 
+      It cant be part of Customer product, since we cant ask them to pass
+      UV rays eveytime
+      > R&D areas, For testing and evaluation of codes on hardware
+  --> MASKED ROM (Particular memory is masked)
+      a part of memory is non-erasable(masked from getting damaged)
+      it can be part of IC where manufacturing data of that IC or lot number
+
+
+3. Hybdird Memory
+-----------------
+🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️
+A person has taken a picture, which memory would you suggest store?
+RAM or ROM?
+we would say ROM, since we need it...
+but what if picture is blurry ? we cant save it to ROM, 
+sicne ROM is single time writable, and we cant change it again
+RAM is also not a good idea
+
+TO avoid this, we will use Hybrid Memories
+
+Hybrid Memories = RAM + ROM
+    = write n times + data gets retained
+🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️🚂️
+
+  EEPROM :
+  --> it will take around 1.5ms, write is slow 
+  --> but read is faster, so we will use EEPROM for small data/few bytes
+      if we want to write 500 bytes, it is taking 750ms
+  NAND FLASH & NOR FLASH :
+  --> these are block memory, block size varies from 256 bytes to 16kb
+  --> in general, will store 
+      > data in NAND FLASH
+      > code in NOR FLASH
+  --> becuase, NOR FLASH support xip((eXecute In Place)
+  but when we load our code which is of size 4.5 MB into MicroController, 
+  while running, exectuable file willget loaded to RAM inside MicroController
+  RAM size in general would be in Kb's, 4KB in 8051 MC
+  NOR FLASH make this possible wihtout loading code into RAM, 
+  it will run file where it is
+
+
+
+4. Sensors :
+------------
+  > Data read by sensors is sent to ADC and Analog inputs read by sensor
+  is , and converted to Digital output, 
+
+5. ADC & DAC  
+------------
+  > DAC converts again Digital to Analog to Actuators which turns Windmill
+
+6. LED to show power in Laptops
+-------------------------------
+  > Human INterface
+
+7. FPGA & ASIC 
+--------------
+    FPGA(Field programmable gate array) and ASIC(Application Specific Integrated Ciruit)
+    we can design FPGA again and again, but once ASIC is designed, 
+    we cant redesign ASIC again
+    If we are not sure about our design, we will test our model with FPGA
+    if design is working fine with good results, then we will build ASIC
+    if more number are there, we will use ASIC , if less no we will FPGA
+
+8. Diagnostic Port
+------------------
+   it can alaysis ports in system
+
+9. Auxilary System(Power, Cooling)
+----------------------------------
+   Designing of power supply, diff components on different voltage supply
+   
+10. Software
+------------
+  Embedded software
+
+=============================================================================
+
+____________
+Requirements
+____________
+
+--> Reliability
+    we will see how long the product will work, we are purchasing
+    if product dont work atleast that time, so reliability places imp role
+   
+--> cost-effectivness
+    Product we are deisnging should be cost-effective, not everyone purchase
+    Apple phone, most of the people buy Android
+
+--> Low Power Consumption
+    It should consume less power
+    
+--> Efficient Usage of Processing Power
+    ES we designed should use power efficiently
+    
+    lets say we are designing water pumping system, which pumps water
+    daily at 8'0 clock
+    --> we need timer to pump water at given time
+    --> we need pump to run 24/7 , so we will use battery
+    power is needed 24/7 only for timer, when time arrives, then power should
+    flow for period of time till 1hour
+    so battery will drain, we need to give above change to ES design
+    8A.M-9A.M --> MC should work for 1hour
+    
+    so builtin timer wont be good here, using RTC(Real Time clock) chip is good option
+    it consumes less power(micro Amp)
+    
+    we will set INT should occur when 8'0 is happened in RTC
+    then MicroController is activated
+    again at 9'0 clocok, one more INTerrupt will stops MC
+
+--> Efficient Usage of Memory
+    only infinite loop will consume 100% memory
+    so better avoid using them if not necessary
+    
+
+
+
+=============================================================================
+_____________
+Challengings
+_____________
+
+--> Efficient Inputs/Outputs
+  ___
+ |MC |
+ | ? |_________
+ |___|    |
+    |
+      /
+     /  (switch)
+    |
+        -----
+         ---
+          -
+         GND
+  when switch is close
+  Floating socket(switch is open)
+  EMI will occur(getting output even without input given)
+
+
+--> Embedding an OS
+    scheduling algorithms
+
+--> Code Optmisazation
+    to optimize code, which runs in less time using less memory resource
+    we need more experience
+--> Testing and Debugging
+    When product is not tested properly, brand value will be down
+    > Samsung note7 phones are not allowed in airpots, since it got blasted
+    > Iphone is quality product, but few days back, they wanted to approach
+      their own maps rather than google maps, but its not working as
+      GoogleMAPS
+    > Tato Nano cars even though its cost-effective, production got stopped
+      since 2-3 cars got blasted
+    These things happened due to improper testing, which brings those
+    companies brand value down
+
+    
+           
+=============================================================================
+_____________
+Tends in Dev
+_____________
+
+Depending on req of design, we will choose
+
+1. Processor
+2. Memory
+   when its comes to Data saving, use NAND FLASH is best
+   when its comes to code, using NOR FLASH recommended, since it support xip
+3. OS
+4. Programming languages
+   If its boot loader, using Assembly makes it faster
+   if its GUI, python/Java is good
+5. Development Tools
+   we can use IDE based on our requirement
+   
+
+
+
+
+=============================================================================
+_____________________
+Common design metrics
+_____________________
+
+1. Time to Prototype
+   > Prototype is basic model of main product
+   > Dont waste time in prototype, since it delays final product to market
+   > someone might come to market with some other product by then
+
+2. Power
+   > make sure, given power is enough to run all component on board with less
+
+3. Performanc3 & Correctness
+
+4. Size
+   > keeo handy in size
+
+5. NRE
+   > Non-reccuring engineering cost
+   > say a product has 3 parts ( A+B+C)
+   > all 3 parts A,B,C are developed, when client comes said, 
+   > change C, its again takes time to chang e with new C part
+
+6. Maintainability & Flexibility
+
+7. Safety
+  > ES are deployed where humans are there, so safety is most important
+
+8. Unit cost
+
+9. Time to market
+   > first money is important in Competitors
+      
+=============================================================================
+
+
+----------------- GPS Vs ES difference  ----------------------------
+
+what is GPS ?
+System designed for general activities
+eg: Computer
+we use it for office work, 
+moms will use it cooking videos
+Fathers use it for Excel work
+Siblings use it for games or project work
+
+Mobile phone, we can do all above said, in better way
+But MObile phone is considered as ES, why ?
+
+###############################################
+A system using which u design a ES, its not ES
+Its GPS
+ES developed using some other ES is GPS
+###############################################
+
+Gate opening system cant be deisgned using other Gate Opening system
+Google car - NO , ES
+Computer   - YES, GPS
+
+Mobile phone with mobile - YES
+but we dont use it since
+> Nice Big screen
+> Keyboard
+
+
+
+Does the size matter wither ur using ES or GPS
+--> Bluetooth button
+--> industrial control systems
+
+
+__________________
+Real time Systems:
+__________________
+If your system is capable of taking action on given instant within specified
+amount of time, then its RTS
+
+
+Hard Real Time 
+--------------
+Should meet its deadline - Life Critical Application
+eg:-
+Airbags, PaceMakers, Missiles
+
+Firm Real Time
+---------------
+Similar to Hard Real time - Properties
+Because of Failure, if large investment is being lost, then its Firm real time
+system
+Money is important in Firm Real time system
+Eg:-
+Moon Rover, either crash landing or landing and losing communication
+here money, time invested are lost, not human lives
+
+
+Soft Real Time
+--------------
+can have Tolerance in meeting its deadline
+eg:-
+Vending machine, OVEN, water pumping system
+
+
+
+
+Questions for You
+=================
+Stand-Alone is ES which follows instructions blindy without any error check, this is what said in yesterdays class
+is it crt ?
+we can write single program for these Hierarchial validations, isn't it ?
+ </p>
           </div>
         </section>
         
